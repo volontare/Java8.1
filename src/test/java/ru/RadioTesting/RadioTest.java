@@ -9,74 +9,85 @@ class RadioTest {
     @Test
     void shouldChangeTheStation() {
         Radio radio = new Radio();
-        assertEquals(8, radio.changeTheStation(8));
+        radio.setRadioStation(5);
+        assertEquals(5, radio.getradioStation());
     }
 
     @Test
-    void shouldChangeTheStationIfNumberIsWrong() {
+    void shouldChangeTheStationNumberIsOverMax() {
         Radio radio = new Radio();
-        assertEquals(5, radio.changeTheStation(12));
+        radio.setRadioStation(15);
+        assertEquals(0, radio.getradioStation());
     }
 
     @Test
-    void shouldChangeTheStationByButtonNextIfCurrentIsNine() {
+    void shouldChangeTheStationNumberIsUnderMin() {
         Radio radio = new Radio();
-        radio.setCurrentRadioStation(9);
+        radio.setRadioStation(-1);
+        assertEquals(0, radio.getradioStation());
+    }
+
+    @Test
+    void shouldChangeTheStationByNextButton() {
+        Radio radio = new Radio();
         radio.changeTheStationByNextButton();
-        assertEquals(0, radio.getCurrentRadioStation());
-    }
-
-    @Test
-    void shouldChangeTheStationByButtonNext() {
-        Radio radio = new Radio();
-        radio.changeTheStationByNextButton();
-        assertEquals(6, radio.getCurrentRadioStation());
-    }
-
-    @Test
-    void shouldChangeTheStationByPrevButtonIfCurrentIsNull() {
-        Radio radio = new Radio();
-        radio.setCurrentRadioStation(0);
-        radio.changeTheStationByPrevButton();
-        assertEquals(9, radio.getCurrentRadioStation());
+        assertEquals(1, radio.getradioStation());
     }
 
     @Test
     void shouldChangeTheStationByPrevButton() {
         Radio radio = new Radio();
+        radio.setRadioStation(4);
         radio.changeTheStationByPrevButton();
-        assertEquals(4, radio.getCurrentRadioStation());
+        assertEquals(3, radio.getradioStation());
     }
 
     @Test
-    void shouldIncreaseVolumeUnderMinimum() {
+    void shouldChangeTheStationByNextButtonIsOverMax() {
         Radio radio = new Radio();
+        radio.setRadioStation(9);
+        radio.changeTheStationByNextButton();
+        assertEquals(0, radio.getradioStation());
+    }
+
+    @Test
+    void shouldChangeTheStationByPrevButtonUnderMin() {
+        Radio radio = new Radio();
+        radio.setRadioStation(0);
+        radio.changeTheStationByPrevButton();
+        assertEquals(9, radio.getradioStation());
+    }
+
+    @Test
+    void shouldIncreaseVolume() {
+        Radio radio = new Radio();
+        radio.setVolume(5);
         radio.increaseVolume();
-        assertEquals(6, radio.getCurrentVolume());
+        assertEquals(6, radio.getVolume());
     }
 
     @Test
-    void shouldIncreaseVolumeAboveMinimum() {
+    void shouldDecreaseVolumeIfCurrentVolumeIsMin() {
         Radio radio = new Radio();
-        radio.setCurrentVolume(10);
-        shouldDecreaseVolume();
-        assertEquals(10, radio.getCurrentVolume());
+        radio.decreaseVolume();
+        assertEquals(0, radio.getVolume());
     }
 
     @Test
     void shouldDecreaseVolume() {
         Radio radio = new Radio();
+        radio.setVolume(8);
         radio.decreaseVolume();
-        assertEquals(4, radio.getCurrentVolume());
+        assertEquals(7, radio.getVolume());
     }
-
 
     @Test
-    void shouldDecreaseVolumeIfMin() {
+    void shouldIncreaseVolumeIfCurrentVolumeIsMax () {
         Radio radio = new Radio();
-        radio.setCurrentVolume(0);
-        radio.decreaseVolume();
-        assertEquals(0, radio.getCurrentVolume());
-    }
 
+        for (int i = 0; i < 11; i++) {
+            radio.increaseVolume();
+        }
+        assertEquals(10, radio.getVolume());
+    }
 }

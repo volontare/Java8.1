@@ -2,70 +2,64 @@ package ru.RadioTesting;
 
 public class Radio {
 
-    private int currentVolume = 5;
-    int maxVolume = 10;
-    int minVolume = 0;
-    private int currentRadioStation = 5;
-    int maxRadioStation = 9;
-    int minRadioStation = 0;
+    private int volume;
+    private int maxVolume = 10;
+    private int minVolume = 0;
+    private int radioStation;
+    private int maxRadioStation = 9;
+    private int minRadioStation = 0;
 
-
-    public int changeTheStation(int intendedStation) {
-        if (intendedStation <= 9 && intendedStation >= 0) {
-            currentRadioStation = intendedStation;
-        }
-        return currentRadioStation;
+    public int getradioStation() {
+        return radioStation;
     }
 
+    public int setRadioStation(int radioStation) {
+        if (radioStation <= maxRadioStation && radioStation >= minRadioStation) {
+            this.radioStation = radioStation;
+        }
+        return this.radioStation;
+    }
 
     public void changeTheStationByNextButton() {
-        if (currentRadioStation == maxRadioStation) {
-            currentRadioStation = 0;
-        } else {
-            currentRadioStation += 1;
+        if (radioStation == maxRadioStation) {
+            radioStation = minRadioStation;
+            return;
         }
+        radioStation++;
     }
 
     public void changeTheStationByPrevButton() {
-        if (currentRadioStation == minRadioStation) {
-            currentRadioStation = 9;
+        if (radioStation == minRadioStation) {
+            radioStation = maxRadioStation;
+            return;
         } else {
-            currentRadioStation -= 1;
+            radioStation--;
         }
     }
 
+    public int getVolume() {
+        return volume;
+    }
+
+    public void setVolume(int volume) {
+        this.volume = volume;
+    }
 
     public void increaseVolume() {
-        if (currentVolume == maxVolume) {
+        if (volume == maxVolume) {
             return;
         } else {
-            currentVolume += 1;
+            volume++;
         }
     }
 
     public void decreaseVolume() {
-        if (currentVolume == minVolume) {
+        if (volume == minVolume) {
             return;
         } else {
-            currentVolume -= 1;
+            volume--;
 
         }
     }
 
-    public int getCurrentVolume() {
-        return currentVolume;
-    }
-
-    public void setCurrentVolume(int currentVolume) {
-        this.currentVolume = currentVolume;
-    }
-
-
-    public int getCurrentRadioStation() {
-        return currentRadioStation;
-    }
-
-    public void setCurrentRadioStation(int currentRadioStation) {
-        this.currentRadioStation = currentRadioStation;
-    }
 }
