@@ -81,6 +81,6 @@ class RadioTest {
         for (int i = 0; i < 101; i++) {
             radio.increaseVolume();
         }
-        assertEquals(110, radio.getVolume());
+        assertEquals(100, radio.getVolume());
     }
 }
