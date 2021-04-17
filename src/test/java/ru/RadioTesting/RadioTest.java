@@ -8,7 +8,7 @@ class RadioTest {
 
     @Test
     void shouldChangeTheStation() {
-        Radio radio = new Radio();
+        Radio radio = new Radio(100,10);
         radio.setRadioStation(5);
         assertEquals(5, radio.getradioStation());
     }
@@ -17,13 +17,6 @@ class RadioTest {
     void shouldChangeTheStationNumberIsOverMax() {
         Radio radio = new Radio();
         radio.setRadioStation(15);
-        assertEquals(0, radio.getradioStation());
-    }
-
-    @Test
-    void shouldChangeTheStationNumberIsUnderMin() {
-        Radio radio = new Radio();
-        radio.setRadioStation(-1);
         assertEquals(0, radio.getradioStation());
     }
 
@@ -45,7 +38,7 @@ class RadioTest {
     @Test
     void shouldChangeTheStationByNextButtonIsOverMax() {
         Radio radio = new Radio();
-        radio.setRadioStation(9);
+        radio.setRadioStation(10);
         radio.changeTheStationByNextButton();
         assertEquals(0, radio.getradioStation());
     }
@@ -55,7 +48,7 @@ class RadioTest {
         Radio radio = new Radio();
         radio.setRadioStation(0);
         radio.changeTheStationByPrevButton();
-        assertEquals(9, radio.getradioStation());
+        assertEquals(10, radio.getradioStation());
     }
 
     @Test
@@ -85,9 +78,9 @@ class RadioTest {
     void shouldIncreaseVolumeIfCurrentVolumeIsMax () {
         Radio radio = new Radio();
 
-        for (int i = 0; i < 11; i++) {
+        for (int i = 0; i < 101; i++) {
             radio.increaseVolume();
         }
-        assertEquals(10, radio.getVolume());
+        assertEquals(100, radio.getVolume());
     }
 }
