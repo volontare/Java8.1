@@ -5,26 +5,26 @@ import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
 
 class RadioTest {
+    Radio radio = new Radio(10,100);
 
     @Test
     void shouldChangeTheStation() {
-        Radio radio = new Radio(100,10);
         radio.setRadioStation(5);
-        assertEquals(5, radio.getradioStation());
+        assertEquals(5, radio.getRadioStation());
     }
 
     @Test
     void shouldChangeTheStationNumberIsOverMax() {
         Radio radio = new Radio();
         radio.setRadioStation(15);
-        assertEquals(0, radio.getradioStation());
+        assertEquals(0, radio.getRadioStation());
     }
 
     @Test
     void shouldChangeTheStationByNextButton() {
         Radio radio = new Radio();
         radio.changeTheStationByNextButton();
-        assertEquals(1, radio.getradioStation());
+        assertEquals(1, radio.getRadioStation());
     }
 
     @Test
@@ -32,7 +32,7 @@ class RadioTest {
         Radio radio = new Radio();
         radio.setRadioStation(4);
         radio.changeTheStationByPrevButton();
-        assertEquals(3, radio.getradioStation());
+        assertEquals(3, radio.getRadioStation());
     }
 
     @Test
@@ -40,7 +40,7 @@ class RadioTest {
         Radio radio = new Radio();
         radio.setRadioStation(10);
         radio.changeTheStationByNextButton();
-        assertEquals(0, radio.getradioStation());
+        assertEquals(0, radio.getRadioStation());
     }
 
     @Test
@@ -48,7 +48,7 @@ class RadioTest {
         Radio radio = new Radio();
         radio.setRadioStation(0);
         radio.changeTheStationByPrevButton();
-        assertEquals(10, radio.getradioStation());
+        assertEquals(10, radio.getRadioStation());
     }
 
     @Test
