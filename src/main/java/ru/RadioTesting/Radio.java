@@ -3,11 +3,19 @@ package ru.RadioTesting;
 public class Radio {
 
     private int volume;
-    private int maxVolume = 10;
-    private int minVolume = 0;
+    private int maxVolume = 100;
+    private int minVolume;
     private int radioStation;
-    private int maxRadioStation = 9;
-    private int minRadioStation = 0;
+    private int maxRadioStation = 10;
+    private int minRadioStation;
+
+    public Radio(int maxVolume, int maxRadioStation) {
+        this.maxVolume = maxVolume;
+        this.maxRadioStation = maxRadioStation;
+    }
+
+    public Radio() {
+    }
 
     public int getradioStation() {
         return radioStation;
