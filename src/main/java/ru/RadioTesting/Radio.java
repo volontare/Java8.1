@@ -1,5 +1,13 @@
 package ru.RadioTesting;
 
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+
+@Data
+@AllArgsConstructor
+@NoArgsConstructor
+
 public class Radio {
 
     private int volume;
@@ -12,13 +20,6 @@ public class Radio {
     public Radio(int maxVolume, int maxRadioStation) {
         this.maxVolume = maxVolume;
         this.maxRadioStation = maxRadioStation;
-    }
-
-    public Radio() {
-    }
-
-    public int getradioStation() {
-        return radioStation;
     }
 
     public int setRadioStation(int radioStation) {
@@ -45,13 +46,6 @@ public class Radio {
         }
     }
 
-    public int getVolume() {
-        return volume;
-    }
-
-    public void setVolume(int volume) {
-        this.volume = volume;
-    }
 
     public void increaseVolume() {
         if (volume == maxVolume) {
@@ -69,5 +63,4 @@ public class Radio {
 
         }
     }
-
 }
